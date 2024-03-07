@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+
+class TwoSum
+{
+    static void Main()
+    {
+        var nums = new List<int>();
+
+        Console.WriteLine("Welcome to Two Sum Finder");
+        while (true)
+        {
+            Console.WriteLine("\nCommands:\n1. Add sum\n2.Target\n3.Exit");
+            Console.Write("\nEnter your choice: ");
+            int choice = int.Parse(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    Console.Write("Enter the number to add to the list: ");
+                    nums.Add(int.Parse(Console.ReadLine()));
+                    Console.WriteLine("Updated List: " + string.Join(", ", nums));
+                    break;
+                case 2:
+                    Console.Write("Enter the target sum: ");
+                    int targetSum = int.Parse(Console.ReadLine());
+                    for (int i = 0; i < nums.Count; i++)
+                    {
+                        for (int j = i + 1; j < nums.Count; j++)
+                        {
+                            if (nums[i] + nums[j] == targetSum)
+                            {
+                                Console.WriteLine($"Indices of the two numbers that add up to {targetSum}: {i}, {j}");
+                                goto endSwitch;
+                            }
+                        }
+                    }
+                    Console.WriteLine("No such pair found.");
+                    break;
+                case 3:
+                    Console.WriteLine("Exiting...");
+                    return;
+                default:
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    break;
+            }
+        endSwitch:;
+        }
+    }
+}
